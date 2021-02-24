@@ -14,11 +14,11 @@ class AninmalSpider(scrapy.Spider):
                              callback=self.parse,
                              meta={'page_num': page_num})
 
-    # 不能正确调用的问题，排查了 allowed_domains 的设置和过滤开关的问题，最终发现是优先级的问题。
+    # 在代码调试过程中，出现了不能正确调用回调函数的问题，表现为一直不能解析具体图片 url 的内容
+    # 在排查了 allowed_domains 的设置和过滤开关的设置后，最终缺点是 Request 优先级的问题
     # 可以在 scrapy.Request(page_url, callback=self.parse, priority=10) 中设置优先级
-    # 这里牵扯一个爬虫深度和优先级的问题。
-    # 我们可以手动改变每一给 Request 的优先级，用数字来定义。数字越大，优先级越高。
-    # 但我这里还是选择更改整个爬虫的结构来改变优先级的问题。
+    # Request 的优先级用 priority 的数字参数来定义。数字越大，优先级越高。
+    # 但我这里还是选择更改整个爬虫的结构来改变优先级的问题
 
     def parse(self, response):  # 第一个 parse 方法用来获取每一页上各个动物页面的 url
         # 先从 Request 中的 meta 字典中取出相应的页数
