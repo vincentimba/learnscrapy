@@ -67,7 +67,7 @@ class ImagesSpiderPipeline(ImagesPipeline):
     这个类内部已经定义好了一系列的方法，无需额外配置即可直接使用
     使用时直接将其继承，并在 settings.py 文件中配置即可
     但如果想要又更多定制化的操作，我们就必须将一些方法重写
-    这里我们重写其中的 self.get_media_requests 和 self.file_path 两个方法
+    这里我们重写其中的 get_media_requests 和 file_path 两个方法
     """
     def get_media_requests(self, item, info):
         # 这个方法用来获取图片的 url，并通过 Request 方法来保存图片

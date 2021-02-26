@@ -1,5 +1,9 @@
 import scrapy
-from ..items import AnimalspiderItem
+from animalSpider.items import AnimalspiderItem
+# 虽然这里在 Pycharm 上会报错，但不影响程序的运行
+# 解决方法为：在 Pycharm 中右键 root 目录，将其设为项目的根目录
+# 当然保险期间也可以使用下面相对目录的写法
+# from ..items import AnimalspiderItem
 import re
 
 class AninmalSpider(scrapy.Spider):
